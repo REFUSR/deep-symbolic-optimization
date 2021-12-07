@@ -2,11 +2,6 @@ from distutils.core import setup
 import os
 from setuptools import dist
 
-dist.Distribution().fetch_build_eggs(['Cython', 'numpy<=1.19'])
-
-import numpy
-from Cython.Build import cythonize
-
 required = [
     "pytest",
     "cython",
@@ -42,9 +37,7 @@ setup(  name='dso',
         description='Deep symbolic optimization.',
         author='LLNL',
         packages=['dso'],
-        setup_requires=["numpy", "Cython"],
-        ext_modules=cythonize([os.path.join('dso','cyfunc.pyx')]), 
-        include_dirs=[numpy.get_include()],
+        setup_requires=[],
         install_requires=required,
         extras_require=extras
         )
